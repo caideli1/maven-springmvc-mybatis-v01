@@ -17,7 +17,7 @@
 		delete from vote
 		where vote_id = #{voteId,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="com.ballot.entity.VOTE">
+	<insert id="insert" parameterType="com.ballot.entity.VOTER">
 		insert into vote (vote_id, title, create_time,
 		update_time, user_id, memo
 		)
@@ -26,7 +26,7 @@
 		#{updateTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.ballot.entity.VOTE">
+	<insert id="insertSelective" parameterType="com.ballot.entity.VOTER">
 		insert into vote
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="voteId != null">
@@ -69,7 +69,7 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.ballot.entity.VOTE">
+	<update id="updateByPrimaryKeySelective" parameterType="com.ballot.entity.VOTER">
 		update vote
 		<set>
 			<if test="title != null">
@@ -90,7 +90,7 @@
 		</set>
 		where vote_id = #{voteId,jdbcType=INTEGER}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="com.ballot.entity.VOTE">
+	<update id="updateByPrimaryKey" parameterType="com.ballot.entity.VOTER">
 		update vote
 		set title = #{title,jdbcType=VARCHAR},
 		create_time = #{createTime,jdbcType=TIMESTAMP},

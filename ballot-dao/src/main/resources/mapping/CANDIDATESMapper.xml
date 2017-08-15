@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ballot.dao.CANDIDATESMapper" >
-  <resultMap id="BaseResultMap" type="com.vcyber.votesystem.entity.CANDIDATES" >
+  <resultMap id="BaseResultMap" type="com.ballot.entity.CANDIDATES" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="vote_id" property="voteId" jdbcType="INTEGER" />
@@ -20,13 +20,13 @@
     delete from candidates
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.vcyber.votesystem.entity.CANDIDATES" >
+  <insert id="insert" parameterType="com.ballot.entity.CANDIDATES" >
     insert into candidates (id, user_id, vote_id, 
       ballots)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{voteId,jdbcType=INTEGER}, 
       #{ballots,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.vcyber.votesystem.entity.CANDIDATES" >
+  <insert id="insertSelective" parameterType="com.ballot.entity.CANDIDATES" >
     insert into candidates
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vcyber.votesystem.entity.CANDIDATES" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.ballot.entity.CANDIDATES" >
     update candidates
     <set >
       <if test="userId != null" >
@@ -72,7 +72,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vcyber.votesystem.entity.CANDIDATES" >
+  <update id="updateByPrimaryKey" parameterType="com.ballot.entity.CANDIDATES" >
     update candidates
     set user_id = #{userId,jdbcType=INTEGER},
       vote_id = #{voteId,jdbcType=INTEGER},
